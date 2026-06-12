@@ -35,5 +35,10 @@ public class UrlController {
                 .location(URI.create(originalUrl))
                 .build();
     }
+    @DeleteMapping("/deleteAll")
+    public String deleteAll(){
+        String response = urlService.deleteAllPrevious();
+        return  response;
+    }
 
 }

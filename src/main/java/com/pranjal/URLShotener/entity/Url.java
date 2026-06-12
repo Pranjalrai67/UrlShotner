@@ -25,4 +25,8 @@ public class Url {
     private String shortCode;
 
     private LocalDateTime createdAt;
+
+    private int clickCount = 0;
+
+    private LocalDateTime lastAccessed;
 }
