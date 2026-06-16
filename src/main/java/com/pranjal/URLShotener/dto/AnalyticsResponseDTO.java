@@ -12,6 +12,6 @@ public class AnalyticsResponseDTO {
     private LocalDateTime createdAt;
 
     private int clickCount;
-
+    private LocalDateTime expiresAt;
     private LocalDateTime lastAccessed;
 }

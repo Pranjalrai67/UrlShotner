@@ -16,5 +16,13 @@ public class GlobalExceptionHandler  {
     public ResponseEntity<String> handleAlreadyExist(AlreadyExistsException ex){
         return  ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
+    @ExceptionHandler(TimeShouldBeAfterNowException.class)
+    public ResponseEntity<String> handleTimeBefore(TimeShouldBeAfterNowException ex){
+        return  ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+    }
+    @ExceptionHandler(UrlExpiredException.class)
+    public ResponseEntity<String> handleExpiredUrl(UrlExpiredException ex){
+        return  ResponseEntity.status(HttpStatus.GONE).body(ex.getMessage());
+    }
 
 }

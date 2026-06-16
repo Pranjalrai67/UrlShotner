@@ -30,4 +30,6 @@ public class Url {
     private int clickCount = 0;
 
     private LocalDateTime lastAccessed;
+
+    private LocalDateTime expiresAt;
 }
