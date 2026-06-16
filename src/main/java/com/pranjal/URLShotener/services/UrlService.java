@@ -1,5 +1,6 @@
 package com.pranjal.URLShotener.services;
 
+import com.pranjal.URLShotener.Exceptions.AlreadyExistsException;
 import com.pranjal.URLShotener.Exceptions.ShortCodeNotFoundException;
 import com.pranjal.URLShotener.dto.RequestDto;
 import com.pranjal.URLShotener.dto.ResponseDto;
@@ -38,9 +39,16 @@ public class UrlService {
     public ResponseDto createShortUrl(RequestDto requestDto){
         Url actual= new Url();
         actual.setOriginalUrl(requestDto.getOriginalUrl());
-
+        String shortCode;
+        if(requestDto.getCustomAlias() != null){
+            if(checkShortCode(requestDto.getCustomAlias())){
+                throw new AlreadyExistsException("This short Code already Exists");
+            }
+            shortCode = requestDto.getCustomAlias();
+        }else{
+            shortCode = ShortCodeGenerator.createShortCode(6);
+        }
         //Creating New Short Code
-        String shortCode = ShortCodeGenerator.createShortCode(6);
 
 
         //Checking Weather That Code Already Exists or Not

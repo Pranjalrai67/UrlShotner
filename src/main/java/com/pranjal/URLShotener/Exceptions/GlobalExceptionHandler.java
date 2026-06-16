@@ -12,5 +12,9 @@ public class GlobalExceptionHandler  {
     public ResponseEntity<String> handleNotFound(ShortCodeNotFoundException ex){
         return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+    @ExceptionHandler(AlreadyExistsException.class)
+    public ResponseEntity<String> handleAlreadyExist(AlreadyExistsException ex){
+        return  ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
 
 }

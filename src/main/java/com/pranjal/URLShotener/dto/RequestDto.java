@@ -10,4 +10,5 @@ public class RequestDto {
     @NotBlank
     @URL
     private String originalUrl;
+    private String customAlias = null;
 }
